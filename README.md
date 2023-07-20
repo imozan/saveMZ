@@ -1,4 +1,4 @@
-ة# saveMZ ⚜️
+# saveMZ ⚜️
 
 # it's easly save with json file in python 
 
