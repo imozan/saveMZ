@@ -2,7 +2,7 @@
 
 # it's easly save with json file 
 
-
-'''bash
+## install library
+' ' 'bash
 pip install saveMZ
-'''
+' ' '
