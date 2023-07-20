@@ -13,7 +13,7 @@ pip install saveMZ
 import saveMZ
 
 read(file_path,data)
-write(file,path,data)
+write(file_path,data)
 
 writes(data)
 reads(data)
