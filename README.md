@@ -1,8 +1,9 @@
-# saveMZ ⚜️
+ة# saveMZ ⚜️
 
 # it's easly save with json file 
 
 ## install library
-' ' 'bash
+
+```bash
 pip install saveMZ
-' ' '
+```
