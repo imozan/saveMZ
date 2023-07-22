@@ -13,7 +13,7 @@ description = "It's easy save in Python with Json file"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
-    "programming language :: Python :: 3",
+    "Programming Language :: Python :: 3",
     "Operating System :: OS Independent ",
     "License :: OSI Approved :: MIT License ",
 ]
