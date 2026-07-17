@@ -1,6 +1,5 @@
 from .database import SaveMZ
-from .serilazer import writes, reads
-from .exceptions *
+from .serializer import writes, reads
+from .exceptions import *
 
-__version__ = 2.0.0
-
+__version__ = "2.0.0"
