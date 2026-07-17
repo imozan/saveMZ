@@ -1,13 +1,35 @@
-'''md
 # Changelog
 
-## version 2.0
+All notable changes to this project will be documented in this file.
+
+## [2.0.0] - 2026-07-17
 
 ### Added
 
-- Cache
-- Events
-- reload()
-- get()
-- set()
-- delete()\Custom Exceptions
+- Added event system (`onEvent`, `offEvent`, `emit`).
+
+- Added cache support.
+
+- Added `delete()` method.
+
+- Added custom exceptions.
+
+- Added type hints.
+
+- Added nested path support.
+
+- Added reload functionality.
+
+### Changed
+
+- Improved `get()` and `set()`.
+
+- Improved JSON writing.
+
+- Improved error handling.
+
+### Fixed
+
+- Fixed path validation.
+
+- Fixed cache synchronization.
