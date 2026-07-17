@@ -2,25 +2,29 @@
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
-
 [project]
 name = "savemz"
 version = "2.0"
+
 authors = [
-  { name="Julius", email="jansses70@gmail.com" },
+    { name = "Julius", email = "jansses70@gmail.com" }
 ]
-description = "It's easy save in Python with Json file"
+
+description = "A lightweight JSON storage library with caching and events."
 readme = "README.md"
 requires-python = ">=3.10"
-license = "MIT"
+license = { text = "MIT" }
+
+keywords = [
+    "json",
+    "database",
+    "storage",
+    "cache",
+    "events"
+]
 
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent ",
-    "License :: OSI Approved :: MIT License ",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
 ]
-
-[project.urls]
-"Homepage" = "https://github.com/imozan/saveMZ.git"
-"Bug Tracker" = "https://github.com/imozan/saveMZ/issues"
-
