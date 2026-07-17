@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Any
+from typing import Any, Callable
 from .exceptions import (
    PathNotFoundError,
    InvalidEventError,
@@ -23,12 +23,14 @@ class SaveMZ:
           "after_set": set(),
           "before_reload": set(),
           "after_reload": set(),
+          "before_delete": set(),
+          "after_delete": set(),
        }
 
       
          
     
-    def file_path(self):
+    def file_path(self) -> None:
      if os.path.exists(self.path):
          pass
      else:
@@ -36,7 +38,7 @@ class SaveMZ:
            json.dump({}, f)
 
 
-    def write(self, data, indent):
+    def write(self, data: Any, indent: int = 2) -> None:
         self.emit("before_write", data)
         self.cache = data 
         with open(self.path,"w",encoding="utf8") as f:
@@ -45,22 +47,20 @@ class SaveMZ:
 
 
 
-    def read(self):
+    def read(self) -> Any:
         self.emit("before_read")
         if self.cache is None:
           with open(self.path,"r") as d:
              self.cache = json.load(d)
           self.emit("after_read", self.cache)
-          print("file")
           return self.cache
         else: 
-           print("cache")
            self.emit("after_read", self.cache)
            return self.cache
         
 
 
-    def get(self, path):
+    def get(self, path: str) -> Any:
      value = self.read()
      keys = path.split(".")
      for key in keys:
@@ -69,50 +69,54 @@ class SaveMZ:
         value = value[key]
      return value
    
-    def set(self, path: str, data: Any):
+    def set(self, path: str, data: Any) -> None:
        self.emit("before_set", path, data)
        keys = path.split(".")
        obj = self.read()
        value = obj
        for key in keys[:-1]:
+          if key not in value:
+             raise PathNotFoundError(f"path {path} was not found.")
           value = value[key]
        value[keys[-1]] = data
        self.write(obj,2)
        self.emit("after_set", path, data)
        
 
-    def delete(self, path: str):
-       self.emit("beforee_delete", path)
+    def delete(self, path: str) -> None:
+       self.emit("before_delete", path)
        keys = path.split(".")
        obj = self.read() 
        value = obj 
        for key in keys[:-1]:
           if key not in value:
-           raise PathNotFoundError(f"path {path} was not found.")
+             raise PathNotFoundError(f"path {path} was not found.")
           value = value[key]
+       if keys[-1] not in value:
+           raise PathNotFoundError(f"path {path} was not found.")
        del value[keys[-1]]
        self.write(obj,2)
        self.emit("after_delete", path)
 
 
-    def reload(self):
+    def reload(self) -> dict:
        self.emit("before_reload")
        self.cache = None
        self.emit("after_reload", self.cache)
        return self.read()
        
     
-    def onEvent(self, event_name: str , callback: Any):
+    def onEvent(self, event_name: str , callback: Callable[...,Any]) -> None:
        if event_name not in self.event:
-          self.event[event_name] = []
+          self.event[event_name] = set()
        self.event[event_name].add(callback)
 
-    def offEvent(self, event_name: str, callback: Any):
+    def offEvent(self, event_name: str, callback: Callable[...,Any]) -> None:
        if event_name in self.event:
           self.event[event_name].discard(callback)
 
 
-    def emit(self, event_name: str, *args):
+    def emit(self, event_name: str, *args: Any) -> None:
        if event_name in self.event:
           for callback in self.event[event_name]:
              callback(*args)
