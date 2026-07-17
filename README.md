@@ -12,7 +12,7 @@ pip install savemz
 ```python
 from savemz import SaveMZ
 
-db = SaveMZ("file name.json")
+db = SaveMZ("file_name.json")
 
 db.set("users.name", "Julius")
 #To write data in file using easy path
