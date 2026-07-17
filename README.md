@@ -1,6 +1,6 @@
-# saveMZ ⚜️
+# savemz 
 
-# it's easly save with json file in python 
+# It's easly save with json file in python 
 
 ## install library
 
