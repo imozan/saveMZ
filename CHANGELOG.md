@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.1] - 2026-07-17
+## [2.1] - 2026-07-18
 
 ### Added
 
@@ -33,3 +33,5 @@ All notable changes to this project will be documented in this file.
 - Fixed path validation.
 
 - Fixed cache synchronization.
+
+- Fixed som errors.
