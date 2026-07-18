@@ -1,8 +1,8 @@
-# Changelog
+  # Changelog
 
 All notable changes to this project will be documented in this file.
 
-## [2.0] - 2026-07-17
+## [2.1] - 2026-07-17
 
 ### Added
 
