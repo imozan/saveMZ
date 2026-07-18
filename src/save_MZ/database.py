@@ -76,7 +76,9 @@ class SaveMZ:
        value = obj
        for key in keys[:-1]:
           if key not in value:
-             raise PathNotFoundError(f"path {path} was not found.")
+             value[key] = {}
+          elif not isinstance(value[key], dict):
+             raise InvalidDataError(f"'{key}' is not an object.")
           value = value[key]
        value[keys[-1]] = data
        self.write(obj,2)
@@ -90,7 +92,7 @@ class SaveMZ:
        value = obj 
        for key in keys[:-1]:
           if key not in value:
-             raise PathNotFoundError(f"path {path} was not found.")
+                 raise PathNotFoundError(f"path {path} was not found.")
           value = value[key]
        if keys[-1] not in value:
            raise PathNotFoundError(f"path {path} was not found.")
@@ -121,5 +123,6 @@ class SaveMZ:
           for callback in self.event[event_name]:
              callback(*args)
              
+     
 
 
