@@ -1,7 +1,7 @@
 # 💾 SaveMZ
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Version](https://img.shields.io/badge/Version-2.0-orange)
+![Version](https://img.shields.io/badge/Version-2.1-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 A lightweight and easy-to-use JSON database library for Python.
